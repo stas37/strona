@@ -1,29 +1,95 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moja Strona</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Retro Bistro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ikony z Font Awesome (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <nav class="navbar">
-      <ul>
-        <li><a href="#">Strona główna</a></li>
-        <li><a href="#">O mnie</a></li>
-        <li><a href="#">Kontakt</a></li>
-      </ul>
+    <h1>Retro Bistro</h1>
+    <nav>
+      <a href="#onas">O nas</a>
+      <a href="#menu">Menu</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="#social">Social Media</a>
     </nav>
   </header>
-
   <main>
-    <h1>Witaj na mojej stronie!</h1>
-    <p>To jest prosta strona z menu.</p>
-  </main>
+    <section id="onas">
+      <h2>O nas</h2>
+      <p>
+        Witaj w Retro Bistro!  
+        Jesteśmy klimatyczną restauracją inspirowaną latami 60. i 70.  
+        W naszej kuchni znajdziesz połączenie tradycyjnych smaków z nowoczesną lekkością.<br>
+        Zapraszamy na niezapomnianą podróż kulinarną w stylu retro!
+      </p>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 Moja Strona</p>
-  </footer>
+    <section id="menu">
+      <h2>Menu</h2>
+      <ul class="menu-list">
+        <li>
+          <span>Śniadanie Retro</span>
+          <span>19 zł</span>
+        </li>
+        <li>
+          <span>Sałatka Klasyczna</span>
+          <span>22 zł</span>
+        </li>
+        <li>
+          <span>Zupa Pomidorowa</span>
+          <span>16 zł</span>
+        </li>
+        <li>
+          <span>Sandwich Reuben</span>
+          <span>26 zł</span>
+        </li>
+        <li>
+          <span>Deser dnia</span>
+          <span>14 zł</span>
+        </li>
+        <li>
+          <span>Lemoniada domowa</span>
+          <span>10 zł</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="kontakt">
+      <h2>Kontakt</h2>
+      <div class="contact-info">
+        <strong>Adres:</strong> ul. Klimatyczna 12, 00-123 Warszawa<br>
+        <strong>Telefon:</strong> <a href="tel:+48123456789" class="contact-link">+48 123 456 789</a><br>
+        <strong>E-mail:</strong> <a href="mailto:kontakt@retrobistro.pl" class="contact-link">kontakt@retrobistro.pl</a>
+      </div>
+    </section>
+
+    <section id="social">
+      <h2>Social Media</h2>
+      <div class="social-icons">
+        <a href="https://facebook.com/retrobistro" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/retrobistro" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@retrobistro" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </section>
+  </main>
+  <script>
+    // Prosta animacja: Fade-in sekcji przy przewijaniu
+    const sections = document.querySelectorAll('main section');
+    const showSection = () => {
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          sec.classList.add('show');
+        }
+      });
+    };
+    window.addEventListener('scroll', showSection);
+    window.addEventListener('load', showSection);
+  </script>
 </body>
 </html>
