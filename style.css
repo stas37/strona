@@ -138,3 +138,12 @@ section.show ul.menu-list li {
   main { margin: 1rem 0.3rem; }
   nav a { margin: 0 0.6rem; }
 }
+section {
+  display: none;
+  /* ...reszta stylów... */
+}
+
+section.active {
+  display: block;
+  /* Twoje animacje mogą tu zostać, np. fade-in */
+}
