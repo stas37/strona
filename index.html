@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Retro Bistro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Ikony z Font Awesome (CDN) -->
+  <!-- Font Awesome do ikon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -28,7 +28,6 @@
         Zapraszamy na niezapomnianą podróż kulinarną w stylu retro!
       </p>
     </section>
-
     <section id="menu">
       <h2>Menu</h2>
       <ul class="menu-list">
@@ -58,7 +57,6 @@
         </li>
       </ul>
     </section>
-
     <section id="kontakt">
       <h2>Kontakt</h2>
       <div class="contact-info">
@@ -67,10 +65,9 @@
         <strong>E-mail:</strong> <a href="mailto:kontakt@retrobistro.pl" class="contact-link">kontakt@retrobistro.pl</a>
       </div>
     </section>
-
     <section id="social">
       <h2>Social Media</h2>
-      <div class="social-icons">
+      <div class="social-icons center">
         <a href="https://facebook.com/retrobistro" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
         <a href="https://instagram.com/retrobistro" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://tiktok.com/@retrobistro" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
@@ -78,18 +75,31 @@
     </section>
   </main>
   <script>
-    // Prosta animacja: Fade-in sekcji przy przewijaniu
+    // Kod do pokazywania tylko wybranej sekcji
+    const menuLinks = document.querySelectorAll('nav a');
     const sections = document.querySelectorAll('main section');
-    const showSection = () => {
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80) {
-          sec.classList.add('show');
+
+    function showSection(hash) {
+      sections.forEach(section => {
+        if ('#' + section.id === hash) {
+          section.classList.add('active');
+        } else {
+          section.classList.remove('active');
         }
       });
-    };
-    window.addEventListener('scroll', showSection);
-    window.addEventListener('load', showSection);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      showSection('#menu');
+      menuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const hash = this.getAttribute('href');
+          showSection(hash);
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+      });
+    });
   </script>
 </body>
 </html>
